@@ -5,6 +5,7 @@ import Paginado from "../../componentes/Paginado/paginado";
 import Filter from "../../componentes/Filter/filter";
 import { fetchProducts, searchProducts } from "../../redux/Actions/actions";
 import "./home.css";
+import HomePage from "../Home/home"
 
 function Home() {
   const dispatch = useDispatch();
@@ -62,6 +63,8 @@ function Home() {
   };
 
   return (
+    <div>
+      <HomePage/>
     <div className="homeView">
       <section className="mainContent">
         <div className="filter">
@@ -98,6 +101,7 @@ function Home() {
       <footer>
      
       </footer>
+    </div>
     </div>
   );
 }

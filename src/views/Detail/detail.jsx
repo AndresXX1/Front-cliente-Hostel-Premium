@@ -426,7 +426,7 @@ const handlePayClick = async (event, id) => {
   }
 
     // Enviar la solicitud POST con los datos del producto y del usuario
-    const response = await axios.post('https://back-hostel.onrender.com/payment/create-order', {
+    const response = await axios.post('http://localhost:3002/payment/create-order', {
       productId: products?.id,
       userId: 1,
       quantity: 1,
@@ -484,7 +484,7 @@ function Label({ componentName, valueType, isProOnly }) {
 
 /// LA CONST PRODUCTSSTATE TRAE TODA LA INFO COMPLETA DEL PRODUCTO DESDE PRODUCTS, REDUCER ////
   React.useEffect(() => {
-    axios.get(`https://back-hostel.onrender.com/products/detail/${id}`)
+    axios.get(`http://localhost:3002/products/detail/${id}`)
       .then(({ data }) => {
         if (data.name) {
           setProducts(data);
@@ -530,7 +530,7 @@ console.log(products)
     console.log(toSend)
     switch (favIcon){
       case starOut:
-    axios.post("https://back-hostel.onrender.com/favorites/add", toSend)
+    axios.post("http://localhost:3002/favorites/add", toSend)
     .then((response) => {
       if(response){
         setFav(starFil) 
@@ -542,7 +542,7 @@ console.log(products)
     })
     break;
     case starFil:
-      axios.delete("https://back-hostel.onrender.com/favorites/delete", { data: toSend })
+      axios.delete("http://localhost:3002/favorites/delete", { data: toSend })
       .then((response) =>{
         if (response.data.message){
           setFav(starOut)

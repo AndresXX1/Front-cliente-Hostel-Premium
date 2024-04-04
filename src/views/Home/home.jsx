@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, Grid, Card, CardContent, CardMedia } from '@material-ui/core';
+import { Typography, Grid, Card, CardContent, CardMedia, Button } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTopLocations } from '../../redux/Actions/actions';
 import { useHistory } from 'react-router-dom';
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     cursor: 'pointer' // Add cursor pointer to indicate clickable
   },
   media: {
-    height: 140,
+    height: 500,
   },
 
   title: {
@@ -44,6 +44,7 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const topLocations = useSelector(state => state?.stateA?.topLocations);
   const history = useHistory();
+  const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
   const handleLocationClick = (location, ranking) => {
     // Redirect to Filter component with selected location info
@@ -54,14 +55,20 @@ const HomePage = () => {
     dispatch(fetchTopLocations())
   },[])
 
+  const goToNextCard = () => {
+    setCurrentCardIndex((prevIndex) =>
+      prevIndex === topLocations.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const goToPreviousCard = () => {
+    setCurrentCardIndex((prevIndex) =>
+      prevIndex === 0 ? topLocations.length - 1 : prevIndex - 1
+    );
+  };
+
   return (
-    <div style={{
-      backgroundImage: `url("https://en.idei.club/uploads/posts/2023-06/thumbs/1687339939_en-idei-club-p-white-abstract-design-dizain-pinterest-61.jpg")`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      height: '126vh',
-      marginTop: "0px",
-    }}>
+    <div>
     <section style={{marginTop: "10px"}}>
       <Typography variant="h2" gutterBottom className={classes.title} style={{marginTop:"75px",marginBottom:"-80px"}}>
         ¡Bienvenido a HostelsPremium!
@@ -73,42 +80,46 @@ const HomePage = () => {
         ¡He aquí los destinos más elegidos por nuestros clientes!
       </Typography>
 
-    
-        <br />
-        <br />
-        <Grid container spacing={4}>
- {topLocations && topLocations.map((location, index) => (
-    <Grid item xs={12} sm={6} md={3} key={index}>
-      <Card style={{
-        height: "400px",
-        maxwidth: "400px",
-        minWidth: "400px",
-        marginLeft: "80px",
-        marginTop: "50px",
-        backgroundColor: "transparent",
-        cursor: "pointer" // Añade esta línea para cambiar el cursor a una mano
-      }} onClick={() => handleLocationClick(location.productLocation, index + 1)}>
-        <CardMedia
-          style={{
-            height: "300px",
-          }}
-          image={`https://source.unsplash.com/featured/?${location.productLocation}`}
-          title={location.productName}
-        />
-        <CardContent>
-          <Typography variant="h6" component="h3" color='black'>
-            Puesto #{index + 1}:{location.productLocation}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {location.productName}
-          </Typography>
-        </CardContent>
-      </Card>
-    </Grid>
-  ))}
-</Grid>
-      </section>
-    </div>
+      <Grid container spacing={4}>
+        {topLocations && topLocations.map((location, index) => (
+          <Grid item xs={12} sm={6} md={3} key={index} style={{display: index === currentCardIndex ? 'block' : 'none'}}>
+            <Card style={{
+              height: "500px",
+              maxwidth: "700px",
+              minWidth: "1800px",
+              marginLeft: "20px",
+              marginTop: "-100px",
+              backgroundColor: "transparent",
+              cursor: "pointer" // Añade esta línea para cambiar el cursor a una mano
+            }} onClick={() => handleLocationClick(location.productLocation, index + 1)}>
+              <CardMedia
+                style={{
+                  height: "500px",
+                }}
+                image={`https://source.unsplash.com/featured/?${location.productLocation}`}
+                title={location.productName}
+              />
+              <CardContent>
+                <Typography variant="h6" component="h3" color='black'>
+                  Puesto #{index + 1}:{location.productLocation}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {location.productName}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+      {/* Botones para ir a la siguiente y anterior tarjeta */}
+      { topLocations.length > 1 && (
+        <div>
+          <Button onClick={goToPreviousCard}>Previous</Button>
+          <Button onClick={goToNextCard}>Next</Button>
+        </div>
+      )}
+    </section>
+  </div>
   );
 };
 

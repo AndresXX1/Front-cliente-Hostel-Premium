@@ -22,7 +22,7 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post('https://back-hostel.onrender.com/users/login', data);
+      const response = await axios.post('http://localhost:3002/users/login', data);
       if (response.data) {
         
         const authData = {

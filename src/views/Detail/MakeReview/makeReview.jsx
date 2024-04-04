@@ -69,8 +69,7 @@ export default function MakeReview(){
     
         setOpen(false);
       };
-/*       https://back-hostel.onrender.com
- */   
+
  const onSubmit = (data) => {
         console.log(data)
         const dataToSend = {
@@ -80,7 +79,7 @@ export default function MakeReview(){
             profileImage: auth?.token?.imageUrl || usAvatar
         }
         console.log(dataToSend)
-        axios.post(`https://back-hostel.onrender.com/reviews/products/detail/${id}`, dataToSend)
+        axios.post(`http://localhost:3002/reviews/products/detail/${id}`, dataToSend)
         .then(response => {
             console.log('Reseña enviada exitosamente:', response.data);
         Object.keys(data).forEach((fieldName) => {
