@@ -4,7 +4,7 @@ import { Grid, Typography } from "@mui/material";
 import "./cards.css"; // Importa el archivo CSS donde definiste la clase
 
 const Cards = ({ products }) => {
-  const gridSpacing = window.innerWidth < 4 ? 10 : 15;
+  const gridSpacing = window.innerWidth < 4 ? 10 : 25;
   const xsSize = products.length < 4 ? 12 / products.length : 3;
   const gridStyle = {
     marginLeft: "-150px", // Desplazar todas las tarjetas 20px hacia la izquierda
@@ -19,7 +19,7 @@ const Cards = ({ products }) => {
       ) : (
         products.map((product) => (
           <Grid item xs={xsSize} key={product.id}>
-            <CustomCard // Cambiado de Card a CustomCard
+            <CustomCard 
               id={product.id}
               name={product.name}
               location={product.location}

@@ -30,7 +30,10 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center', // Centrar el texto
     
  },
-
+ fondo: {
+  backgroundColor: "transparent",
+  position: "absolute",
+}
  
 }));
 
@@ -63,7 +66,7 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div className={classes.fondo}>
     <section style={{marginTop: "10px"}}>
       <Typography variant="h2" gutterBottom className={classes.title} style={{marginTop:"75px",marginBottom:"-80px"}}>
         ¡Bienvenido a HostelsPremium!
@@ -80,8 +83,8 @@ const HomePage = () => {
                 height: "400px",
                 width: "1800px",
                 marginLeft: "50px",
-                marginTop: "50px"
-              }}
+                marginTop: "80px",
+                borderRadius: "15px"              }}
               
               image={`https://source.unsplash.com/featured/? ${location.productLocation}`}
               />
@@ -105,7 +108,8 @@ const HomePage = () => {
                   <div style={{
                     marginLeft: "20px",
                     marginTop: "-50px",
-                    position: "absolute"
+                    position: "absolute",
+                    color: "white"
                   }}>
 
                   Puesto #{index + 1 }:{location.productLocation}

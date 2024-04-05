@@ -260,7 +260,12 @@ function Filter({ applyFilters }) {
       )}
       
       </div>
-      <div className="cardsRows">
+      <div style={{
+        marginTop: "600px",
+        marginRight: "100px",
+        marginLeft: "-174px",
+        marginBottom: "100px"
+      }}>
         <Cards products={searchTerm.trim() !== "" ? searchResults : products} />
       </div>
     </div>
