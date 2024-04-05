@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     height: '100%',
-    cursor: 'pointer' // Add cursor pointer to indicate clickable
+    
   },
   media: {
     height: 500,
@@ -26,17 +26,12 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Source Sans Pro',
     fontWeight: 'bold',
     color: '#333',
-    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', // Sombra para un efecto futurista
+    textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)', 
     textAlign: 'center', // Centrar el texto
-    marginBottom: theme.spacing(2), // Espaciado entre títulos y subtítulos
+    
  },
- subtitle: {
-    fontFamily: 'Source Sans Pro',
-    color: '#333',
-    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.2)', // Sombra más suave para el subtítulo
-    textAlign: 'center', // Centrar el texto
-    marginBottom: theme.spacing(4), // Espaciado entre subtítulos y contenido
- },
+
+ 
 }));
 
 const HomePage = () => {
@@ -75,33 +70,46 @@ const HomePage = () => {
       </Typography>
     </section>
 
-    <section className={classes.section}>
-      <Typography variant="h4" gutterBottom className={classes.title} style={{marginTop: "150px", marginBottom: "-50px"}}>
-        ¡He aquí los destinos más elegidos por nuestros clientes!
-      </Typography>
+
 
       <Grid container spacing={4}>
         {topLocations && topLocations.map((location, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index} style={{display: index === currentCardIndex ? 'block' : 'none'}}>
+          <Grid item xs={4} sm={2} md={3} key={index} style={{display: index === currentCardIndex ? 'block' : 'none'}}>
+            <CardMedia
+              style={{
+                height: "400px",
+                width: "1800px",
+                marginLeft: "50px",
+                marginTop: "50px"
+              }}
+              
+              image={`https://source.unsplash.com/featured/? ${location.productLocation}`}
+              />
+              <div style={{
+                marginLeft: "82px"
+              }}>
+
+              
+              </div>
             <Card style={{
-              height: "500px",
-              maxwidth: "700px",
+              height: "00px",
+              maxwidth: "1800px",
               minWidth: "1800px",
-              marginLeft: "20px",
-              marginTop: "-100px",
+              marginLeft: "50px",
+              marginTop: "-0px",
               backgroundColor: "transparent",
               cursor: "pointer" // Añade esta línea para cambiar el cursor a una mano
             }} onClick={() => handleLocationClick(location.productLocation, index + 1)}>
-              <CardMedia
-                style={{
-                  height: "500px",
-                }}
-                image={`https://source.unsplash.com/featured/?${location.productLocation}`}
-                title={location.productName}
-              />
               <CardContent>
                 <Typography variant="h6" component="h3" color='black'>
-                  Puesto #{index + 1}:{location.productLocation}
+                  <div style={{
+                    marginLeft: "20px",
+                    marginTop: "-50px",
+                    position: "absolute"
+                  }}>
+
+                  Puesto #{index + 1 }:{location.productLocation}
+                  </div>
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                   {location.productName}
@@ -118,7 +126,7 @@ const HomePage = () => {
           <Button onClick={goToNextCard}>Next</Button>
         </div>
       )}
-    </section>
+    
   </div>
   );
 };
