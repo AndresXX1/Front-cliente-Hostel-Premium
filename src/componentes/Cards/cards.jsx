@@ -7,7 +7,7 @@ const Cards = ({ products }) => {
   const gridSpacing = window.innerWidth < 4 ? 10 : 25;
   const xsSize = products.length < 4 ? 12 / products.length : 3;
   const gridStyle = {
-    marginLeft: "-150px", // Desplazar todas las tarjetas 20px hacia la izquierda
+    marginLeft: "-149px", // Desplazar todas las tarjetas 20px hacia la izquierda
   };
 
   return (

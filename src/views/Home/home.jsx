@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(4),
   },
   card: {
-    height: '100%',
+    height: '99%',
     
   },
   media: {

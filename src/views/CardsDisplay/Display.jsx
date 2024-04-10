@@ -14,12 +14,12 @@ function Home() {
   const totalPages = useSelector((state) => state.stateA.totalPages);
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPages, setCurrentPages] = useState(1);
   const [filters, setFilters] = useState({}); // Estado para almacenar los filtros aplicados
   const cardsPerPage = 8; // Número de tarjetas por página
 
   useEffect(() => {
-    setCurrentPage(1);
+    setCurrentPages(1);
   }, [searchResults]);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ function Home() {
 
   const handleSearch = (searchTerm) => {
     setSearchTerm(searchTerm.trim());
-    setCurrentPage(1);
+    setCurrentPages(1);
     if (searchTerm.trim() !== "") {/* dknfjkdn */
       dispatch(searchProducts(searchTerm.trim()))
         .then((response) => {
@@ -90,7 +90,7 @@ function Home() {
         )}
         <div className="paginado">
         <Paginado
-  currentPage={currentPage}
+  currentPage={currentPages}
   onPageClick={onPageChange}
   totalPages={totalPages}
   isSearchResult={searchTerm.trim() !== ""}
