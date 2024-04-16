@@ -5,7 +5,9 @@ import Paginado from "../../componentes/Paginado/paginado";
 import Filter from "../../componentes/Filter/filter";
 import { fetchProducts, searchProducts } from "../../redux/Actions/actions";
 import "./home.css";
-import HomePage from "../Home/home"
+
+import HomePage from "../Home/home";
+
 
 function Home() {
   const dispatch = useDispatch();
@@ -23,8 +25,8 @@ function Home() {
   }, [searchResults]);
 
   useEffect(() => {
-    dispatch(fetchProducts(filters, currentPage, cardsPerPage)); // Incluir filtros en la solicitud de productos
-  }, [dispatch, filters, currentPage, cardsPerPage]);
+    dispatch(fetchProducts(filters, currentPages, cardsPerPage)); // Incluir filtros en la solicitud de productos
+  }, [dispatch, filters, currentPages, cardsPerPage]);
 
   const handleSearch = (searchTerm) => {
     setSearchTerm(searchTerm.trim());
@@ -52,13 +54,13 @@ function Home() {
   }, [searchResults, searchTerm]);
 
   const onPageChange = (page) => {
-    setCurrentPage(page);
+    setCurrentPages(page);
     dispatch(fetchProducts(filters, page, cardsPerPage)); // Incluir filtros en la solicitud de paginación
   };
 
   const applyFilters = (newFilters) => {
     setFilters(newFilters);
-    setCurrentPage(1); // Reiniciar la página al aplicar filtros
+    setCurrentPages(1); // Reiniciar la página al aplicar filtros
     dispatch(fetchProducts(newFilters, 1, cardsPerPage)); // Incluir filtros en la solicitud de productos
   };
 
@@ -96,6 +98,9 @@ function Home() {
   isSearchResult={searchTerm.trim() !== ""}
   filters={filters} // Pasar los filtros al componente Paginado
 />
+        </div>
+        <div>
+        
         </div>
       </section>
       <footer>

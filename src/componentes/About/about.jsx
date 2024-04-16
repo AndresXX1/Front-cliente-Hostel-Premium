@@ -5,13 +5,9 @@ import './About.css'
 
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundImage: `url('https://www.escapadarural.com/blog/wp-content/uploads/2019/05/Cabanas-de-Carmen1-1024x683.jpg')`, // URL de la imagen de fondo
-    backgroundSize: 'cover', // Ajusta la imagen para que cubra todo el contenedor // Establece la altura mínima del contenedor para cubrir todo el viewport
-    minHeight: '100%'
-  },
+
   container: {
-    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    backgroundColor: 'transparent',
     padding: theme.spacing(2), 
     borderRadius: '8px', 
     maxWidth: '1500px', 
@@ -136,7 +132,7 @@ const About = () => {
                 </Typography>
               </Card>
             </Grid>
-          </Grid>//paSubir
+          </Grid>
         </section>
       </Container>
       </div>

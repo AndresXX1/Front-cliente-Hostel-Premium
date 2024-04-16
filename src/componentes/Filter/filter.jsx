@@ -9,6 +9,7 @@ import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import SearchBar from "../SearchBar/searchBar";
 import Cards from "../../componentes/Cards/cards";
 import { useHistory, useLocation } from 'react-router-dom';
+import Ayuda from "../CentroDeAyuda/ayuda"
 
 
 
@@ -261,12 +262,18 @@ function Filter({ applyFilters }) {
       
       </div>
       <div style={{
-        marginTop: "600px",
+        marginTop: "650px",
         marginRight: "100px",
         marginLeft: "-174px",
-        marginBottom: "100px"
+        marginBottom: "200px"
       }}>
         <Cards products={searchTerm.trim() !== "" ? searchResults : products} />
+      </div>
+      <div className="paginado">
+
+        </div>
+      <div>
+     <Ayuda/>
       </div>
     </div>
   );
