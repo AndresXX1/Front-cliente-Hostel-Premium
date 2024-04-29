@@ -1,6 +1,6 @@
 #  Hostel Premium Cliente (FrontEnd)
 
-* 💬 Agencia hotelera
+* 💬 Agencia Hotelera
 * 🛠️ Intuitiva y de facil recorrido para el administrador
 * 📁 Soporta la subida y bajada de datos
 * 🪟 Realizada con Node.js, React, Redux, axios, y estilada con css puro y material UI
